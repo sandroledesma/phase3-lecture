@@ -6,7 +6,10 @@ class Rectangle:
     # constructor -- function that builds the object 
     # objects have to be created inside of the constructor
     def __init__(self, width_param, height_param):
-        self.width = width_param # self._width (underscore) makes it 'private'
+        self._width = None # self._width (underscore) makes it 'private', therefore needs a getter and a setter
+        self._height = None
+
+        self.width = width_param # this now calls the setter via the property we created below
         self.height = height_param
 
     # getter function
@@ -17,7 +20,7 @@ class Rectangle:
     # setter function
     def set_width(self, new_width):
         '''update the existing width'''
-        if new_width > 0: # control type of data entered 
+        if isinstance(new_width, int) and new_width > 0: # control type of data entered 
             self._width = new_width
         else:
             raise ValueError('width must be positive') 
@@ -25,6 +28,15 @@ class Rectangle:
         
     # make width a property, disguise the getter and setter as an attribute 
     width = property(get_width, set_width)
+
+    # # simple getter/setter function
+    # def get_width(self):
+    #     return self._width # return the width
+
+    # def set_width(self, new_width):
+    #     self._width = new_width # updates width 
+
+    # width = property(get_width, set_width) # makes the getter and setter into a property
 
     # decorator @property - create a function name that includes the getter and setter
     @property
