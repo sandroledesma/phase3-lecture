@@ -64,9 +64,10 @@ class Rectangle:
         return f'<Rectangle w:{self.width}, h:{self.height}>'
         # prints as "<Rectangle w:2, h:3>>"
 
-# build a rectangle object
-r1 = Rectangle(2, 3)
-r2 = Rectangle(6, 9)
+if __name__ == '__main__':
+    # build a rectangle object
+    r1 = Rectangle(2, 3)
+    r2 = Rectangle(6, 9)
 
-print(r1.width, r1.height, r1.get_area())
+    print(r1.width, r1.height, r1.get_area())
 
